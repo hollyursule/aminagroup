@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Feedback Form</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f9;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    .radio-group, .checkbox-group {
+      margin-bottom: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Customer Feedback Form</h2>
+
+  <form>
+
+    <!-- Personal Info -->
+    <label>Full Name</label>
+    <input type="text" placeholder="Enter your name" required>
+
+    <label>Email</label>
+    <input type="email" placeholder="Enter your email" required>
+
+    <label>Phone Number</label>
+    <input type="tel" placeholder="Enter phone number">
+
+    <!-- Service Rating -->
+    <label>Rate Our Service</label>
+    <select required>
+      <option value="">-- Select Rating --</option>
+      <option>Excellent</option>
+      <option>Very Good</option>
+      <option>Good</option>
+      <option>Average</option>
+      <option>Poor</option>
+    </select>
+
+    <!-- Experience -->
+    <div class="radio-group">
+      <label>Was your experience good?</label><br>
+      <input type="radio" name="experience"> Yes
+      <input type="radio" name="experience"> No
+    </div>
+
+    <!-- Services Used -->
+    <div class="checkbox-group">
+      <label>Which services did you use?</label><br>
+      <input type="checkbox"> Web Development<br>
+      <input type="checkbox"> Mobile App<br>
+      <input type="checkbox"> IT Support<br>
+    </div>
+
+    <!-- Feedback -->
+    <label>Your Feedback</label>
+    <textarea rows="4" placeholder="Write your feedback here..." required></textarea>
+
+    <!-- Suggestions -->
+    <label>Suggestions for Improvement</label>
+    <textarea rows="3" placeholder="Your suggestions..."></textarea>
+
+    <!-- Submit -->
+    <button type="submit">Submit Feedback</button>
+
+  </form>
+</div>
+
+</body>
+</html>
