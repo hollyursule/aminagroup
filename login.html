@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amina's Login Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Login Form</h2>
+
+    <form onsubmit="return validateForm()">
+        
+        <label>Username</label>
+        <input type="text" id="username">
+        <div id="userError" class="error"></div>
+
+        <label>Email</label>
+        <input type="email" id="email">
+        <div id="emailError" class="error"></div>
+
+        <label>Password</label>
+        <input type="password" id="password">
+        <input type="checkbox" onclick="togglePassword()"> Show Password
+        <div id="passError" class="error"></div>
+
+        <br>
+        <input type="checkbox"> Remember Me
+
+        <br><br>
+        <button type="submit">Login</button>
+
+    </form>
+</div>
+
+<script>
+function validateForm() {
+    let username = document.getElementById("username").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    let valid = true;
+
+    // clear errors
+    document.getElementById("userError").innerHTML = "";
+    document.getElementById("emailError").innerHTML = "";
+    document.getElementById("passError").innerHTML = "";
+
+    if (username === "") {
+        document.getElementById("userError").innerHTML = "Username required";
+        valid = false;
+    }
+
+    if (email === "") {
+        document.getElementById("emailError").innerHTML = "Email required";
+        valid = false;
+    }
+
+    if (password === "") {
+        document.getElementById("passError").innerHTML = "Password required";
+        valid = false;
+    }
+
+    return valid;
+}
+
+function togglePassword() {
+    let pass = document.getElementById("password");
+    if (pass.type === "password") {
+        pass.type = "text";
+    } else {
+        pass.type = "password";
+    }
+}
+</script>
+
+</body>
+</html>
