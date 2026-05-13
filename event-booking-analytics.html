@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>event-booking-analytics</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    padding: 30px;
+    color: white;
+    text-align: center;
+
+    /* 🔥 Instagram-style gradient */
+    background: linear-gradient(135deg,
+        #f58529,
+        #dd2a7b,
+        #8134af,
+        #515bd4);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+/* 💎 Glass Cards */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.card {
+    width: 180px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.number {
+    font-size: 32px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* 📊 Table */
+table {
+    width: 85%;
+    margin: auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+th {
+    background: rgba(255,255,255,0.2);
+}
+
+/* ✨ Badge */
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: white;
+    color: black;
+    font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📊 Ultra Event Booking Analytics</h1>
+<p class="badge">Live Simulation Dashboard</p>
+
+<div class="container">
+    <div class="card">
+        <h3>Total</h3>
+        <div class="number" id="total">0</div>
+    </div>
+
+    <div class="card">
+        <h3>Weddings</h3>
+        <div class="number" id="wedding">0</div>
+    </div>
+
+    <div class="card">
+        <h3>Events</h3>
+        <div class="number" id="events">0</div>
+    </div>
+
+    <div class="card">
+        <h3>Birthdays</h3>
+        <div class="number" id="birthday">0</div>
+    </div>
+</div>
+
+<h2>📋 Recent Bookings (Imagined Data)</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody id="table"></tbody>
+</table>
+
+<script>
+
+// 🔥 Imagined "real system" data
+let bookings = [
+    {name:"Diane Kamali", event:"Wedding", date:"2026-06-10", status:"Confirmed"},
+    {name:"Eric Ndayishimiye", event:"Conference", date:"2026-06-12", status:"Pending"},
+    {name:"Alice Uwase", event:"Birthday", date:"2026-06-15", status:"Confirmed"},
+    {name:"John Bosco", event:"Wedding", date:"2026-06-18", status:"Confirmed"},
+    {name:"Claudine Mukamana", event:"Conference", date:"2026-06-20", status:"Pending"},
+    {name:"Kevin Nsengimana", event:"Birthday", date:"2026-06-22", status:"Confirmed"}
+];
+
+// 📊 Calculations
+let total = bookings.length;
+let wedding = bookings.filter(b => b.event === "Wedding").length;
+let events = bookings.filter(b => b.event === "Conference").length;
+let birthday = bookings.filter(b => b.event === "Birthday").length;
+
+// Display stats
+document.getElementById("total").innerText = total;
+document.getElementById("wedding").innerText = wedding;
+document.getElementById("events").innerText = events;
+document.getElementById("birthday").innerText = birthday;
+
+// Table render
+let table = document.getElementById("table");
+
+bookings.forEach(b => {
+    let color = b.status === "Confirmed" ? "lime" : "orange";
+
+    table.innerHTML += `
+        <tr>
+            <td>${b.name}</td>
+            <td>${b.event}</td>
+            <td>${b.date}</td>
+            <td style="color:${color}">${b.status}</td>
+        </tr>
+    `;
+});
+
+</script>
+
+</body>
+</html>

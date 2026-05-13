@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultra Event Booking</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* 🌊 Animated Gradient Background */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #1d2b64, #f8cdda, #00c9ff, #92fe9d);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* 💎 Glass Card */
+form {
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 25px;
+    width: 360px;
+    color: white;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+}
+
+/* Title */
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Floating Inputs */
+.inputBox {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.inputBox input,
+.inputBox select,
+.inputBox textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+
+.inputBox label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: #ddd;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.inputBox input:focus ~ label,
+.inputBox input:valid ~ label,
+.inputBox textarea:focus ~ label,
+.inputBox textarea:valid ~ label {
+    top: -8px;
+    left: 8px;
+    font-size: 12px;
+    color: #fff;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #00c9ff;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #92fe9d;
+}
+
+/* Guests Counter */
+.counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.counter button {
+    width: 40px;
+    background: white;
+}
+
+/* Success Popup */
+.popup {
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    background: #00ffcc;
+    color: black;
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.popup.show {
+    right: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<form id="form">
+    <h2>✨ Event Booking</h2>
+
+    <div class="inputBox">
+        <input type="text" required>
+        <label>Full Name</label>
+    </div>
+
+    <div class="inputBox">
+        <input type="email" required>
+        <label>Email</label>
+    </div>
+
+    <div class="inputBox">
+        <input type="tel" required>
+        <label>Phone</label>
+    </div>
+
+    <div class="inputBox">
+        <select required>
+            <option value="" disabled selected></option>
+            <option>Wedding</option>
+            <option>Conference</option>
+            <option>Birthday</option>
+            <option>Meeting</option>
+        </select>
+        <label>Event Type</label>
+    </div>
+
+    <div class="inputBox">
+        <input type="date" id="date" required>
+        <label>Event Date</label>
+    </div>
+
+    <div class="inputBox counter">
+        <button type="button" onclick="changeGuests(-1)">-</button>
+        <input type="number" id="guests" value="1" min="1" required>
+        <button type="button" onclick="changeGuests(1)">+</button>
+    </div>
+
+    <div class="inputBox">
+        <textarea required></textarea>
+        <label>Notes</label>
+    </div>
+
+    <button type="submit">🚀 Book Now</button>
+</form>
+
+<div class="popup" id="popup">✅ Booking Successful!</div>
+
+<script>
+// 📅 Prevent past dates
+let today = new Date().toISOString().split("T")[0];
+document.getElementById("date").setAttribute("min", today);
+
+// 👥 Guest Counter
+function changeGuests(val) {
+    let input = document.getElementById("guests");
+    let current = parseInt(input.value);
+    if (current + val >= 1) {
+        input.value = current + val;
+    }
+}
+
+// 🎉 Success Popup
+document.getElementById("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    let popup = document.getElementById("popup");
+    popup.classList.add("show");
+
+    setTimeout(() => {
+        popup.classList.remove("show");
+    }, 3000);
+});
+</script>
+
+</body>
+</html>
