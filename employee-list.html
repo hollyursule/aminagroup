@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee List</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f4f7fc;
+      padding:40px;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:auto;
+      background:white;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:25px;
+    }
+
+    .header h1{
+      color:#1e3a8a;
+    }
+
+    .btn{
+      background:#2563eb;
+      color:white;
+      padding:12px 18px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .btn:hover{
+      background:#1d4ed8;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    table thead{
+      background:#2563eb;
+      color:white;
+    }
+
+    table th,
+    table td{
+      padding:15px;
+      text-align:left;
+      border-bottom:1px solid #ddd;
+    }
+
+    table tbody tr:hover{
+      background:#f1f5f9;
+    }
+
+    .actions button{
+      padding:8px 12px;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      margin-right:5px;
+      color:white;
+    }
+
+    .view{
+      background:#0ea5e9;
+    }
+
+    .edit{
+      background:#f59e0b;
+    }
+
+    .delete{
+      background:#ef4444;
+    }
+
+    @media(max-width:768px){
+      table{
+        display:block;
+        overflow-x:auto;
+      }
+
+      .header{
+        flex-direction:column;
+        gap:15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <h1>Employee List</h1>
+      <button class="btn">+ Add Employee</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Department</th>
+          <th>Position</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>001</td>
+          <td>Amina Hassan</td>
+          <td>amina@gmail.com</td>
+          <td>HR</td>
+          <td>Manager</td>
+          <td>+250 788 111 222</td>
+          <td class="actions">
+            <button class="view">View</button>
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>002</td>
+          <td>Kevin Hirwa</td>
+          <td>kevin@gmail.com</td>
+          <td>IT</td>
+          <td>Developer</td>
+          <td>+250 788 333 444</td>
+          <td class="actions">
+            <button class="view">View</button>
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>003</td>
+          <td>Sarah Ali</td>
+          <td>sarah@gmail.com</td>
+          <td>Finance</td>
+          <td>Accountant</td>
+          <td>+250 788 555 666</td>
+          <td class="actions">
+            <button class="view">View</button>
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+</body>
+</html>
